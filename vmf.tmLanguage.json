@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Valve Map Format",
+  "scopeName": "source.keyvalues",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#sections" },
+    { "include": "#properties" },
+    { "include": "#strings" },
+    { "include": "#braces" }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.double-slash.vmf",
+      "match": "//.*$"
+    },
+    "sections": {
+      "name": "entity.name.section.vmf",
+      "match": "^\\s*[a-zA-Z_][a-zA-Z0-9_]*\\b"
+    },
+    "properties": {
+      "name": "keyword.other.assignment.vmf",
+      "match": "\"([^\"]*)\"\\s+(?=\")"
+    },
+    "strings": {
+      "name": "string.quoted.double.vmf",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.numeric.vmf",
+          "match": "-?\\d+(\\.\\d+)?"
+        },
+        {
+          "name": "punctuation.definition.vector.vmf",
+          "match": "[\\[\\]()]"
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        { "name": "punctuation.section.braces.begin.vmf", "match": "\\{" },
+        { "name": "punctuation.section.braces.end.vmf", "match": "\\}" }
+      ]
+    }
+  }
+}
